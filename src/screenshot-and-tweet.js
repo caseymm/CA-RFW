@@ -36,7 +36,7 @@ async function screenshotAndTweet(){
   const metadataRespLatest = await fetch(metadataFileUrl);
   const metadataLatest = await metadataRespLatest.json();
 
-  if(metadataLatest.updated){
+  if(metadataLatest.updated && metadataLatest.counties.length > 0){
     message += `🚩 Red flag warning 🚩 issued for ${formatCounties(metadataLatest.counties)}`;
     if(metadataLatest.cleared.length > 0){
       message += `\n\n🆗 Red flag warnings cleared for ${formatCounties(metadataLatest.cleared)}`;

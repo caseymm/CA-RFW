@@ -1,0 +1,37 @@
+{
+  "name": "ca-rfw",
+  "version": "1.0.0",
+  "description": "figure out js action",
+  "main": "get-data.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build src/action.js -o dist",
+    "get-data": "node -r dotenv/config src/get-data.js",
+    "screenshot-and-tweet": "node -r dotenv/config src/screenshot-and-tweet.js",
+    "wait": "node src/wait.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caseymm/ca-rfw.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caseymm/ca-rfw/issues"
+  },
+  "homepage": "https://github.com/caseymm/ca-rfw#readme",
+  "devDependencies": {
+    "aws-sdk": "^2.986.0",
+    "node-fetch": "^3.0.0"
+  },
+  "dependencies": {
+    "@turf/boolean-point-in-polygon": "^6.5.0",
+    "@turf/centroid": "^6.5.0",
+    "dateformat": "^4.5.1",
+    "dotenv": "^10.0.0",
+    "playwright": "^1.14.1",
+    "playwright-chromium": "^1.14.1",
+    "twitter-lite": "^1.1.0"
+  }
+}

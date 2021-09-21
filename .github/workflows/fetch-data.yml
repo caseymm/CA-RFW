@@ -1,0 +1,28 @@
+name: Fetch CA RFW data
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '*/10 * * * *'
+
+env: 
+  AWS_ID: ${{ secrets.AWS_ID }}
+  AWS_SECRET: ${{ secrets.AWS_SECRET }}
+  TWITTER_ACCESS_TOKEN_KEY: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }}
+  TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+  TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
+  TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+
+jobs:
+  update_ca_rfw_data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm install playwright-chromium
+      - run: yarn get-data
+      - run: yarn wait
+      - run: yarn screenshot-and-tweet
+

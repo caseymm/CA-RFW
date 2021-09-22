@@ -28,6 +28,7 @@
   "dependencies": {
     "@turf/boolean-point-in-polygon": "^6.5.0",
     "@turf/centroid": "^6.5.0",
+    "@turf/explode": "^6.5.0",
     "dateformat": "^4.5.1",
     "dotenv": "^10.0.0",
     "playwright": "^1.14.1",

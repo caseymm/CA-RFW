@@ -2,6 +2,7 @@ import fetch from 'node-fetch';
 import twitter from 'twitter-lite';
 import dateFormat from 'dateformat';
 import centroid from '@turf/centroid';
+import explode from '@turf/explode';
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
 import { uploadFile } from './actions.js';
 import { california } from './shapes/california.js';
@@ -50,14 +51,21 @@ async function getLatestRFW(){
     // is it in CA?
     if(booleanPointInPolygon(center, CA_SHAPE)){
       fc.features.push(f);
-      // which county is it in?
+      // which counties does is cover?
+      const shapeOutlinePoints = explode(f);
       ca_counties.features.forEach(county => {
-        if(booleanPointInPolygon(center, county)){
-          metadata.counties.push(county.properties['NAME'])
-        }
+        const countyName = county.properties['NAME'];
+        shapeOutlinePoints.features.forEach(pt => {
+          if(booleanPointInPolygon(pt, county) && metadata.counties.indexOf(countyName) < 0){
+            metadata.counties.push(countyName);
+          }
+        })
       })
     }
   });
+
+  metadata.counties.sort();
+  metadata.cleared.sort();
 
   // if what we just pulls doesn't equal the lastest version we have, save it
   if(JSON.stringify(fc) === JSON.stringify(jsonLatest)){

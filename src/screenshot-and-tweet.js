@@ -67,10 +67,9 @@ async function screenshotAndTweet(){
         messageArray[m] = messageArray[m].slice(2);
       }
     }
-    console.log(messageArray);
     useTheData(folder, color).then(img => {
       uploadClient.post('media/upload', { media_data: img.toString('base64') }).then(result => {
-        if(messageArray.length === 0){
+        if(messageArray.length === 1){
           const status = {
             status: message,
             media_ids: result.media_id_string

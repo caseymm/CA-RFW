@@ -47,21 +47,26 @@ async function getLatestRFW(){
   const jsonLatest = await respLatest.json();
 
   fullRFWJsonLatest.features.forEach(f => {
-    const center = centroid(f);
-    // is it in CA?
-    if(booleanPointInPolygon(center, CA_SHAPE)){
-      fc.features.push(f);
-      // which counties does is cover?
-      const shapeOutlinePoints = explode(f);
-      ca_counties.features.forEach(county => {
-        const countyName = county.properties['NAME'];
-        shapeOutlinePoints.features.forEach(pt => {
-          if(booleanPointInPolygon(pt, county) && metadata.counties.indexOf(countyName) < 0){
-            metadata.counties.push(countyName);
-          }
+    let ct = 0;
+    // const center = centroid(f);
+    const shapeOutlinePoints = explode(f);
+    shapeOutlinePoints.features.forEach(point => {
+      // is it in CA?
+      if(booleanPointInPolygon(point, CA_SHAPE) && ct === 0){
+        ct++;
+        fc.features.push(f);
+        // which counties does is cover?
+        ca_counties.features.forEach(county => {
+          const countyName = county.properties['NAME'];
+          shapeOutlinePoints.features.forEach(pt => {
+            if(booleanPointInPolygon(pt, county) && metadata.counties.indexOf(countyName) < 0){
+              metadata.counties.push(countyName);
+            }
+          })
         })
-      })
-    }
+      }
+    })
+    
   });
 
   metadata.counties.sort();

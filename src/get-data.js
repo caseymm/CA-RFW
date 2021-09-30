@@ -59,7 +59,8 @@ async function getLatestRFW(){
         ca_counties.features.forEach(county => {
           const countyName = county.properties['NAME'];
           shapeOutlinePoints.features.forEach(pt => {
-            if(booleanPointInPolygon(pt, county) && metadata.counties.indexOf(countyName) < 0){
+            // if(booleanPointInPolygon(pt, county) && metadata.counties.indexOf(countyName) < 0){
+              if(booleanPointInPolygon(pt, county)){
               metadata.counties.push(countyName);
             }
           })
@@ -69,7 +70,14 @@ async function getLatestRFW(){
     
   });
 
-  metadata.counties.sort();
+
+  const res = Array.from(new Set(metadata.counties)).map(a =>
+    ({county:a, count: metadata.counties.filter(f => f === a).length}));
+
+  // 30 seems kinda arbitrary, but we will see how it goes
+  const weeded = res.filter(item => item.count > 30).map(item => item.county);
+
+  metadata.counties = weeded.sort();
   metadata.cleared.sort();
 
   // if what we just pulls doesn't equal the lastest version we have, save it

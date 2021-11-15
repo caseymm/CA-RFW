@@ -3,7 +3,6 @@ import playwright from 'playwright';
 import dateFormat from 'dateformat';
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-
 // The name of the bucket that you have created
 const BUCKET_NAME = 'weather-warnings';
 

@@ -1,8 +1,6 @@
 name: Fetch CA RFW data
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
   schedule:
     - cron: '*/10 * * * *'
 
@@ -20,10 +18,15 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
       - run: npm install
       - run: npm install playwright-chromium
       - run: yarn get-data
       - run: yarn wait
       - run: yarn screenshot-and-tweet
       - run: yarn update-timestamp
+      - uses: stefanzweifel/git-auto-commit-action@v4.14.1
+        with:
+          add_options: last-updated.txt
 

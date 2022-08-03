@@ -9,7 +9,8 @@
     "build": "ncc build src/action.js -o dist",
     "get-data": "node -r dotenv/config src/get-data.js",
     "screenshot-and-tweet": "node -r dotenv/config src/screenshot-and-tweet.js",
-    "wait": "node src/wait.js"
+    "wait": "node src/wait.js",
+    "update-timestamp": "node src/update-timestamp.js"
   },
   "repository": {
     "type": "git",

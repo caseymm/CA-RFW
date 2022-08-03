@@ -25,4 +25,5 @@ jobs:
       - run: yarn get-data
       - run: yarn wait
       - run: yarn screenshot-and-tweet
+      - run: yarn update-timestamp
 

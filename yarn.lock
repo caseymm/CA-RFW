@@ -319,17 +319,17 @@ pend@~1.2.0:
   resolved "https://registry.npmjs.org/pend/-/pend-1.2.0.tgz"
   integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA= sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==
 
-playwright-chromium@^1.35.1:
-  version "1.35.1"
-  resolved "https://registry.npmjs.org/playwright-chromium/-/playwright-chromium-1.35.1.tgz"
-  integrity sha512-bPuWIk/DYWtrg10ajcc9cZLo5s9XQrs6JF6wwiieqZ73rCG3PLVEm0RX8fCUzziuEAhYsoL09UNuKSKv7pKz9A==
+playwright-chromium@^1.36.0:
+  version "1.36.0"
+  resolved "https://registry.npmjs.org/playwright-chromium/-/playwright-chromium-1.36.0.tgz"
+  integrity sha512-AU4/euzKqiIeK7JMsxMlgVx3jRFOnXF0vkptF9mfqeNSETVYCbovZ9EpwJ3Kzm/vVAmIlpHp+VoXdX2bi+05Zg==
   dependencies:
-    playwright-core "1.35.1"
+    playwright-core "1.36.0"
 
-playwright-core@1.35.1:
-  version "1.35.1"
-  resolved "https://registry.npmjs.org/playwright-core/-/playwright-core-1.35.1.tgz"
-  integrity sha512-pNXb6CQ7OqmGDRspEjlxE49w+4YtR6a3X6mT1hZXeJHWmsEz7SunmvZeiG/+y1yyMZdHnnn73WKYdtV1er0Xyg==
+playwright-core@1.36.0:
+  version "1.36.0"
+  resolved "https://registry.npmjs.org/playwright-core/-/playwright-core-1.36.0.tgz"
+  integrity sha512-7RTr8P6YJPAqB+8j5ATGHqD6LvLLM39sYVNsslh78g8QeLcBs5750c6+msjrHUwwGt+kEbczBj1XB22WMwn+WA==
 
 playwright@^1.14.1:
   version "1.14.1"

@@ -33,7 +33,7 @@
     "dateformat": "^4.5.1",
     "dotenv": "^10.0.0",
     "playwright": "^1.14.1",
-    "playwright-chromium": "^1.42.1",
+    "playwright-chromium": "^1.43.0",
     "twitter-lite": "^1.1.0"
   }
 }
